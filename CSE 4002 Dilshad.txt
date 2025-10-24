@@ -1,0 +1,625 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+void addUser();
+void logout();
+void theMain();
+void adminlogin();
+void addnewitem();
+void managebakeryitems();
+void userlogin();
+void login();
+
+struct Admin {
+	string itname, category, adduser, removeuser;
+	int price;
+
+};
+
+struct User {
+	string name, contactnumber, address, email, enumber;
+	int age;
+
+};
+
+void displayCompanyDetail() {
+	cout << "" << endl;
+	cout << "-----------------------Welcome to Amber Bakery System------------------" << endl;
+	cout << " " << endl;
+}
+
+void aboutCompanyDetails() {
+	cout << " " << endl <<
+		"----------------------- Welcome to Amber Bakery System--------------------" << endl <<
+		"                                                                                   " << endl <<
+			      " Amber Bakery is a renowed bakery that is dedicated to provide quality bakery items, " << endl <<
+		" beverages to customers in local and International customers. " << endl <<
+		"  " << endl <<
+		"  " << endl <<
+		                              " Vision " << endl <<
+		"   " << endl <<
+		       " Our aim is to combine traditional baking methods with modern dietary " << endl <<
+		               " consciousness to bring truly wholesome, " << endl <<
+		     " and irresistibly delicious artisanal baked goods to our community every day.”" << endl <<
+		"  " << endl <<
+		"  " << endl <<
+		                            " Our Mission " << endl <<
+		" " << endl <<
+		      " Our mission is to bake gourmet goodies that inspire joy, " << endl <<
+		   " foster community, and enrich the life of every customer with " << endl <<
+		                   " warmth and sweetness.” " << endl <<
+		" " << endl <<
+		  " At Amber Bakery system , We believe in providing a supportive an exclusive bakery " << endl <<
+		             " items with a best customer service" << endl <<
+
+		       	       " Address: 24/2,28th lane flower road , "  << endl <<
+		               " Colombo7				" << endl << 
+		" "  << endl <<
+				" Contact Number 075-837-2881                             " << endl << 
+		" " << endl <<
+				" Follow us on Facebook : DeliciousAmberBakery@fb.com				" << endl <<
+				" Follow us on Instagram : DeliciousAmberBakery@insta.com         " << endl << 
+		" " << endl <<
+				" Email ID : DeliciousAmberBakery@gmai.com	" << endl <<
+		                " Webiste : www.DeliciousAmberBakery.co				" << endl <<
+		"																					" << endl <<
+		 		       " Back to Home Page	" << endl;
+	theMain();
+}
+
+void displaybakeryitems() {
+	int choice;
+
+	do {
+		cout << ".....Available Bakery Items....." << endl <<
+			" " << endl <<
+			" 1) Cakes  " << endl <<
+			" 2) Desserts  " << endl <<
+			" 3) Breads " << endl <<
+			" 4) Cookies " << endl <<
+			" 5) Beverages " << endl <<
+			" " << endl <<
+			" Enter your choice below : ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			cout << " Welcome to the Cake items in Amber Bakery " << endl <<
+				"  " << endl <<
+				" 1) Victoria Cake				UK Dollar 15 (8-inch cake) " << endl <<
+				" 2) Choclate Fudge Cake		UK Dollar 25 (8-inch cake) " << endl <<
+				" 3) Carrot Cake				UK Dollar 12 (8-inch cake) " << endl <<
+				" 4) Lemon Drizzle Cake         UK Dollar 10 (8-inch cake) " << endl <<
+				" 5) Red Velvet Cake            UK Dollar 30 (8-inch cake) " << endl;
+			break;
+
+		case 2:
+			cout << " Welcome to the Dessert items in Amber Bakery " << endl <<
+				"  " << endl <<
+				" 1) Sticky Toffee Pudding      UK Dollar 6 (per portion) " << endl <<
+				" 2) Eton Mess                  UK Dollar 4 (per portion) " << endl <<
+				" 3) Bread and Butter Pudding   UK Dollar 7 (per portion) " << endl <<
+				" 4) Apple Crumble              UK Dollar 5 (per portion) " << endl <<
+				" 5) Choclate Mousse            UK Dollar 8 (per portion) " << endl;
+			break;
+
+		case 3:
+			cout << " Welcome to the Bread items in Amber Bakery " << endl <<
+				"  " << endl <<
+				" 1) Sourdough Bread            UK Dollar 2 (loaf) " << endl <<
+				" 2) Whole Wheat Bread          UK Dollar 3 (loaf) " << endl <<
+				" 3) Bauguette                  Uk Dollar 1 (Each) " << endl <<
+				" 4) Focaccia Bread             UK Dollar 4 (loaf) " << endl <<
+				" 5) Ciabatta Bread             UK Dollar 2 (loaf) " << endl;
+			break;
+
+		case 4:
+			cout << " Welcome to the Cookies items in Amber Bakery " << endl <<
+				" " << endl <<
+				" 1) Choclate chip Cookies      UK Dollar 3 (per dozen) " << endl <<
+				" 2) Shortbread Cookies         UK Dollar 4 (per dozen) " << endl <<
+				" 3) Gingerbread Cookies        UK Dollar 2 (per dozen) " << endl <<
+				" 4) Double Chocolate Cookies   UK Dollar 5 (per dozen) " << endl <<
+				" 5) Oatemeal Raisan Cookies    UK Dollar 3 (per dozen) " << endl;
+			break;
+
+		case 5:
+			cout << " Welcome to the Beverages items in Amber bakery " << endl <<
+				"  " << endl <<
+				" 1) Tea (Black,Green,Herbal)          UK Dollar 9 (Each cup) " << endl <<
+				" 2) Coffee (Ground or Instant)        UK Dollar 4 (Each cup) " << endl <<
+				" 3) Fruit Juice (Apple or Mango)      UK Dollar 3 (Each cup) " << endl <<
+				" 4) Soft drink (Coco-cola or pepsi)   UK Dollar 2 (Each bottle) " << endl <<
+				" 5) Alcholic Beverages (Wine or beer) UK Dollar 5 (Each cup) " << endl;
+			break;
+
+		default:
+			cout << "Invalid Choice. Please Enter a valid option. " << endl;
+			break;
+		}
+	} while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5);
+}
+void addUser() {
+	User newuser;
+	cout << "Enter staff Name : ";
+	cin >> newuser.name;
+
+	cout << "Enter staff age : ";
+	cin >> newuser.age;
+
+	cout << "Enter staff Address : ";
+	cin >> newuser.address;
+
+	cout << "Employee Number : ";
+	cin >> newuser.enumber;
+
+	cout << "Enter phone Number : ";
+	cin >> newuser.contactnumber;
+
+	// Add new user to the Amber bakery system.
+
+	cout << "- - - - - -		New user added Succesfully		- - - - - - " << endl <<
+		    "= = = = = =										= = = = = = " << endl;
+}
+
+void addnewitem() {
+	Admin newitem;
+	cout << " Enter New item name : " << endl;
+	cin >> newitem.itname;
+
+	cout << " Enter the new price : " << endl;
+	cin >> newitem.price;
+
+	cout << " Enter the category : " << endl;
+	cin >> newitem.category;
+
+	cout << " Remove a user ; " << endl;
+	cin >> newitem.removeuser;
+
+	// Add new item to the Amber bakery system.
+
+	cout << "" << endl <<
+		"- - - - - -		New Item added Succesfully		- - - - - - " << endl <<
+		"= = = = = =										= = = = = = " << endl;
+
+}
+
+
+
+void adminlogin() {
+	string admin_username = "Admin";
+	string admin_password = "Admin123";
+
+	string password, username;
+
+	while (true) {
+		cout << "    " << endl;
+		aboutCompanyDetails();
+		cout << "    " << endl;
+	}
+
+	cout << " Enter Admin username : ";
+	cin >> username;
+	if (username == admin_username) {
+		cout << " Enter the Password : ";
+		cin >> password;
+
+		if (password == admin_password) {
+			cout << "" << endl <<
+				" - - - - - - - Logged in Successfully - - - - - - - " << endl <<
+				    " - - - - - - -                        - - - - - - - " << endl;
+
+			string yes = "y";
+			int choice;
+
+			do {
+				cout << " - - - - - - Welcome to Admin access in Amber Bakery - - - - - - " << endl <<
+					" " << endl<< 
+					" 01) Do you want to Add new User ? " << endl <<
+					"  " << endl <<
+					" 02) Do you want to Add new Item ? " << endl <<
+					" 03) Do you want to Remove current User ? " << endl <<
+					" 04) Logout " << endl <<
+					" 05) Return to main menu " << endl <<
+
+					" Enter your Choice here : " << endl;
+				cin >> choice;
+
+				switch (choice) {
+				case 1: addUser();
+					break;
+
+				case 2: addnewitem();
+					break;
+
+				case 4: logout();
+					break;
+
+				case 5: theMain();
+					break;
+
+				default:
+					cout << "Invalid choice. " << endl;
+					break;
+				}
+
+				cout << " Do you want to continue ? (Y/N): ";
+				cin >> yes;
+			} while (yes == "y" || yes == "Y");
+
+			cout << "     " << endl;
+
+
+		}
+		else {
+			cout << " Invalid username. Please try again. " << endl;
+
+		}
+	}
+}
+
+void Contactnumber() {
+	string contactnumber;
+
+	cout << "Enter the Customer Contact Number : " << endl;
+	cin >> contactnumber;
+
+}
+
+void Customeraddress() {
+
+	string address;
+
+	cout << " Enter the Customer Address : " << endl;
+	cin >> address;
+}
+
+void userlogin() {
+	string staff_username = "Staff";
+	string staff_password = "staff123";
+	string username, password;
+
+	while (true) {
+		cout << "     " << endl;
+		displayCompanyDetail();
+		cout << "   " << endl;
+
+		cout << "Enter User Name : ";
+		cin >> username;
+
+		if (username == staff_username) {
+			cout << " Enter the Password : ";
+			cin >> password;
+
+			if (password == staff_password) {
+				cout << " - - - - - - Logged in Successfully ! - - - - - - " << endl <<
+					" - - - - - - Thanks for selecting Amber Bakery - - - - - - " << endl;
+
+				string yes = "y";
+				int choice;
+
+				do {
+					cout << " - - - - - Welcome to Amber Bakery Customer access - - - - - " << endl <<
+
+						" 01) View Available Bakery Items : " << endl <<
+						" 02) Enter the Contact Number : " << endl <<
+						" 03) Enter the Address :  " << endl <<
+						" 04) Log out. " << endl <<
+						" 05) Exit and Return to the Main menu " << endl <<
+						"                                        " << endl <<
+						" Enter your Choice : " << endl;
+					cin >> choice;
+
+					switch (choice) {
+
+					case 1:
+						displaybakeryitems();
+						break;
+
+					case 2:
+						Contactnumber();
+						break;
+
+					case 3:
+						Customeraddress();
+						break;
+
+					case 4:
+						logout();
+						break;
+
+					case 5:
+						theMain();
+						break;
+
+					default:
+						cout << " Invalid Choice. Please try again." << endl;
+						break;
+					}
+					cout << " Do you want to Continue? (y/n) : ";
+					cin >> yes;
+
+				} while (yes == "y" || yes == "Y");
+
+				cout << "    " << endl;
+				break;
+			}
+			else {
+				cout << " Invalid password. Please try again. " << endl;
+			}
+		}
+		else {
+			cout << " Invalid username. Please try again. " << endl;
+		}
+	}
+}
+
+void managebakeryitems(string username) {
+
+	cout << " Welcome to Manage Bakery items option " << endl;
+	int choice;
+
+	string bakeryitemname, bakeryitemprice, removeuser;
+
+	if (username == "Admin") {
+		displayCompanyDetail();
+	}
+	do {
+		cout << " 1) Add Bakery Item " << endl <<
+			"     2) Add Item Price " << endl <<
+			"     3) Remove User " << endl <<
+			"     4) View Available Bakery items " << endl <<
+			"     5) Go back " << endl <<
+			"            " << endl <<
+			" Enter your choice : " << endl;
+		cin >> choice;
+
+		switch (choice) {
+
+		case 1:
+			cout << " Enter the Bakery item : " << endl;
+			cin >> bakeryitemname;
+
+			cout << " = = = = = Succesfully Added " << bakeryitemname << " = = = = = " << endl;
+			break;
+
+		case 2:
+			cout << " Add Item Price : " << endl;
+			cin >> bakeryitemprice;
+			cout << " = = = = = Successfully Updated the Price = = = = = " << endl;
+			break;
+
+		case 3:
+			cout << " Remove User : " << endl;
+			cin >> removeuser;
+			cout << " = = = = = Succesfully Removed the user = = = = = " << endl;
+			break;
+
+		case 4:
+			displaybakeryitems();
+			break;
+
+		case 5:
+			theMain();
+			break;
+
+		default:
+			cout << " Invalid choice. Please try again. " << endl;
+			break;
+		}
+	} while (choice != 5);
+}
+
+void theMain() {
+	displayCompanyDetail();
+	string username1 = "Admin";
+	string password1 = "Admin123";
+
+	string username2 = "Staff";
+	string password2 = "Staff123";
+
+	string username, password, usertype;
+
+	int choice3;
+	do {
+		cout << " 01) Login " << endl <<
+			" 02) About US " << endl <<
+			" 03) Exit " << endl <<
+			"          " << endl <<
+			" Enter your choice : ";
+		cin >> choice3;
+
+		switch (choice3) {
+
+		case 1:
+			login();
+			break;
+
+		case 2:
+			aboutCompanyDetails();
+			break;
+
+		case 3:
+			cout << " - - - - - - - THANK YOU - - - - - - - " << endl;
+			theMain();
+			break;
+
+		default:
+			cout << " Invalid choice ! " << endl;
+			break;
+		}
+	} while (choice3 < 1 || choice3 > 2 || choice3 > 3);
+}
+
+void logout() {
+	string username1 = "Admin";
+	string password1 = "Admin123";
+
+	string username2 = "Staff";
+	string password2 = "staff123";
+
+	string username, password, usertype;
+
+	while (true) {
+
+		cout << endl <<
+			"  - - - - - - - - -  Logged out successfully!  - - - - - - - - - " << endl <<
+			"  - - - - - - - - -                            - - - - - - - - - " << endl <<
+			" If you want to continue please login " << endl <<
+			endl;
+		theMain();
+	}
+}
+
+void login() {
+
+	string username1 = "Admin";
+	string password1 = "Admin123";
+
+	string username2 = "User";
+	string password2 = "User123";
+
+	string username, password, usertype;
+
+	while (true) {
+
+		cout << "    " << endl;
+		displayCompanyDetail();
+		cout << "    " << endl;
+
+		cout << " Enter user Type : (Admin/User) ";
+		cin >> usertype;
+
+		if (usertype == "Admin" || usertype == "User") {
+
+			cout << "Enter User Name : ";
+			cin >> username;
+
+			if (username == username1 || username == username2) {
+				cout << " Enter Password: ";
+				cin >> password;
+
+				if ((username == username1 && password == password1) ||
+					(username == username2 && password == password2))
+				{
+					cout << "  " << endl <<
+						" - - - - - - -   Logged in Successfully  - - - - - - - " << endl <<
+						" - - - - - - -                           - - - - - - - " << endl <<
+						"   " << endl;
+					break;
+				}
+				else {
+					cout << " Invalid Password .Please try again. " << endl;
+				}
+			}
+			else {
+				cout << " Invalid username. Please try again. " << endl;
+			}
+		}
+		else {
+			cout << " Invalid user type.Please try again later. " << endl;
+		}
+	}
+
+
+	if (username == username1) {
+
+		string yes = "y";
+		int choice;
+
+		do {
+			cout << " - - - - - - - Admin Access - - - - - - - " << endl <<
+				"       " << endl <<
+				" 01) Do you want to view the current Bakery items. " << endl <<
+				" 02) Add new Bakery item. " << endl <<
+				" 03) Logout " << endl <<
+				" 04) Exit and return main menu " << endl <<
+				"    " << endl <<
+				" Enter your choice : ";
+			cin >> choice;
+
+			switch (choice) {
+			case 1:
+				displaybakeryitems();
+				break;
+
+			case 2:
+				addnewitem();
+				break;
+
+			case 3:
+				logout();
+				break;
+
+			case 4:
+				theMain();
+				break;
+
+			default:
+				cout << " Invalid choice. " << endl;
+				break;
+			}
+		} while (yes == "y");
+	}
+
+	if (username == username2) {
+
+		string yes = "y";
+		int choice;
+
+		do {
+
+			cout << " - - - - - User Access - - - - - " << endl <<
+				endl <<
+
+				" 01) View Bakery Items. " << endl <<
+				" 02) Logout. " << endl <<
+				" 03) Exit and return to main menu. " << endl <<
+				endl <<
+				" Please Enter your Choice to continue : ";
+			cin >> choice;
+
+			switch (choice) {
+			case 1:
+				displaybakeryitems();
+				break;
+
+			case 2:
+				logout();
+				break;
+
+			case 3:
+				theMain();
+				break;
+
+			default:
+				cout << " Invalid Choice. " << endl;
+				break;
+			}
+		} while (yes == "y");
+	}
+	else {
+		cout << " Invalid username. PLease log in with Admin. " << endl;
+	}
+
+}
+int main() {
+	string username1 = "Admin";
+	string password1 = "Admin123";
+
+	string useraneme2 = "User";
+	string username2 = "User123";
+
+	string username, password, usertype;
+
+	theMain();
+
+	return 0;
+}
+
+
+
+
+
